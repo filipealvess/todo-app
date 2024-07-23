@@ -104,7 +104,7 @@
 </script>
 
 <style>
-  html { font-size: 18px; }
+  html { font-size: 20px; }
 
   body {
     overflow-x: hidden;
