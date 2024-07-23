@@ -56,7 +56,9 @@
     align-items: center;
     width: 100%;
     padding: 15px 20px;
+    background-color: var(--bg-items);
     border-top: 1px solid var(--text-secondary-color);
+    cursor: move;
   }
 
   * { transition: 0.2s color; }

@@ -7,14 +7,21 @@
       @clear-completed-todos="clearCompletedTodos"
     />
 
-    <TodoItem
-      v-for="todo in todos"
-      :key="todo.id"
-      :todo="todo"
-      @remove-todo="$emit('remove-todo', todo.id)"
-      @complete-todo="completeTodo"
-      @update-todo="updateTodo"
-    />
+    <draggable
+        v-model="todos"
+        v-bind="dragOptions"
+        @start="dragging = true"
+        @end="dragging = false"
+    >
+      <TodoItem
+        v-for="todo in todos"
+        :key="todo.id"
+        :todo="todo"
+        @remove-todo="$emit('remove-todo', todo.id)"
+        @complete-todo="completeTodo"
+        @update-todo="updateTodo"
+      />
+    </draggable>
 
     <div class="empty" v-if="noTodos">
       <p>Sua lista está vazia.</p>
@@ -34,19 +41,22 @@
 <script>
   import TodoItem from './TodoItem.vue';
   import Filters from './Filters.vue';
+  import draggable from "vuedraggable";
 
   export default {
     name: 'Todos',
     components: {
       TodoItem,
-      Filters
+      Filters,
+      draggable,
     },
     props: {
       todos: Array,
     },
     data() {
       return {
-        activeTab: 'all'
+        activeTab: 'all',
+        dragging: false,
       }
     },
     methods: {
@@ -100,6 +110,14 @@
         }, true);
 
         return tabIsCorrect && noCompletedTodos;
+      },
+      dragOptions() {
+        return {
+          animation: 200,
+          group: "todos",
+          disabled: false,
+          ghostClass: "ghost"
+        };
       }
     },
     watch: {
