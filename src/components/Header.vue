@@ -77,14 +77,4 @@
   button { cursor: pointer; }
 
   button i { color: #FFFFFF; font-size: 1.15rem; }
-
-  @media (max-width: 350px) {
-    header {
-      background: url('../assets/bg-mobile-light.jpg') left top no-repeat;
-    }
-
-    .dark header {
-      background: url('../assets/bg-mobile-dark.jpg') left top no-repeat;
-    }
-  }
 </style>
