@@ -1,6 +1,8 @@
 <template>
   <header>
     <div class="header">
+      <img :src="backgroundImage" />
+
       <div class="logo">
         <h1>TODO</h1>
         <button type="button" @click="$emit('toggle-theme')">
@@ -32,20 +34,29 @@
     computed: {
       iconClass() {
         return this.darkTheme ? 'fa-sun' : 'fa-moon';
-      }
+      },
+      backgroundImage() {
+        return this.darkTheme ?
+          require('../assets/bg-desktop-dark.jpg' ) :
+          require('../assets/bg-desktop-light.jpg');
+      },
     }
   }
 </script>
 
 <style scoped>
   header {
-    height: 35vh;
-    min-height: 200px;
-    background: url('../assets/bg-desktop-light.jpg') left top no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #1F1F1F;
   }
 
   .dark header {
-    background: url('../assets/bg-desktop-dark.jpg') left top no-repeat;
+    background-color: #0B0B0C;
   }
 
   .header {
@@ -53,10 +64,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: calc(100% - 48px);
     max-width: 500px;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 24px;
+  }
+
+  .header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   .logo {
@@ -65,6 +85,7 @@
     align-items: center;
     width: 100%;
     margin-bottom: 25px;
+    z-index: 2;
   }
 
   h1 {

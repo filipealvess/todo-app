@@ -43,6 +43,7 @@
     padding: 10px 15px;
     background-color: var(--bg-items);
     border-radius: 3px;
+    z-index: 2;
   }
 
   input {

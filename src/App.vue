@@ -106,6 +106,10 @@
 <style>
   html { font-size: 18px; }
 
+  body {
+    overflow-x: hidden;
+  }
+
   .app {
     --bg: #FAFAFA;
     --bg-items: #FFFFFF;
@@ -113,6 +117,9 @@
     --text-primary-color: #616071;
     --text-secondary-color: #9E9DA3;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
     min-height: 100vh;
     background-color: var(--bg);

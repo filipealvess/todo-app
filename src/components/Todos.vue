@@ -114,15 +114,17 @@
   .todo-list {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: calc(100% - 48px);
     max-width: 500px;
-    height: 65vh;
-    margin: 0 auto;
+    max-height: 500px;
+    flex: 1;
+    margin: 0 24px;
     border-radius: 3px;
     background-color: var(--bg-items);
     box-shadow: 0 5px 15px 2px rgb(139 126 244 / 30%);
     overflow: auto;
-    transform: translateY(-30px);
+    transform: translateY(-40px);
+
     /* Barra de Rolagem: Firefox */
     scrollbar-width: thin;
     scrollbar-color: var(--text-secondary-color) transparent;
