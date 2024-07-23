@@ -4,6 +4,7 @@
 
     <button type="button" class="btn-filter" @click="showFilters">
       <i class="fas fa-filter"></i>
+      Filtrar
     </button>
 
     <div class="filter-buttons">
@@ -25,7 +26,7 @@
       </button>
 
       <button type="button" class="hide-filters" @click="hideFilters">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-times"></i>
       </button>
     </div>
 
