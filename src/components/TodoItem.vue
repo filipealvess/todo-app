@@ -10,7 +10,6 @@
 
     <p
       :class="{ 'is-completed' : todo.completed }"
-      @dblclick="enableContentEditing"
       @blur="disableContentEditing"
       @keydown.enter="disableContentEditing"
     >
