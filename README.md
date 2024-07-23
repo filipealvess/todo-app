@@ -1,7 +1,7 @@
 # Todo App
 Projeto criado com base no desafio ["Todo app"](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW) do FrontendMentor para praticar os conhecimentos em [VueJS](https://vuejs.org).
 
-**Teste a aplicação clicando [aqui](https://vuejstasks.web.app).**
+**Teste a aplicação clicando [aqui](https://vuejs-tasks.vercel.app).**
 
 ## Design
 <img src="screenshot/screenshot.png" width="600">
