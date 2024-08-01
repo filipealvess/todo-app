@@ -16,17 +16,45 @@
       {{ todo.title }}
     </p>
 
-    <button type="button" class="remove" @click="$emit('remove-todo')">
-      <i class="fas fa-times"></i>
-    </button>
+    <div class="options">
+      <button type="button" class="options-button" @click="toggleOptions">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+
+      <Dropdown
+        v-if="optionsVisible"
+        :options="[
+          {
+            id: 'update',
+            onClick: () => null,
+            text: 'Editar',
+          },
+          {
+            id: 'delete',
+            onClick: () => null,
+            text: 'Excluir',
+          },
+        ]"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+  import Dropdown from './Dropdown.vue';
+
   export default {
     name: 'Todo',
+    components: {
+      Dropdown,
+    },
     props: {
       todo: Object
+    },
+    data() {
+      return {
+        optionsVisible: false,
+      }
     },
     methods: {
       enableContentEditing({ target }) {
@@ -37,7 +65,10 @@
         target.contentEditable = false;
 
         this.$emit('update-todo', this.todo.id, target.textContent.trim());
-      }
+      },
+      toggleOptions() {
+        this.optionsVisible = !this.optionsVisible;
+      },
     },
     computed: {
       iconClasses() {
@@ -97,21 +128,22 @@
 
   .fa-check-circle { color: var(--blue); }
 
-  .todo:hover .remove { opacity: 1; }
-
-  .remove { opacity: 0; transition: 0.2s opacity, color; }
-
-  @media (max-width: 600px) {
-    p { max-width: 80%; }
+  .options {
+    display: flex;
+    position: relative;
+    padding: 0;
+    margin: 0;
   }
 
-  @media (max-width: 400px) {
-    p { max-width: 70%; }
+  .options-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+  }
 
-    .remove { opacity: 1; }
-
-    button:hover i:not(.fa-check-circle) {
-      color: var(--text-secondary-color);
-    }
+  .options-button * {
+    font-size: 16px;
   }
 </style>
